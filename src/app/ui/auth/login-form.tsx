@@ -1,7 +1,6 @@
 "use client";
 
 import { FormState, LoginFormSchema } from "@lib/definitions";
-import { error } from "console";
 import { useActionState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -39,7 +38,7 @@ export const LoginForm = () => {
       console.log("Login Successful", response);
       alert("Login Successful");
       router.push("/dashboard");
-    } catch (error: any) {
+    } catch (error) {
       console.error("Login Failed:", error);
       alert("Login Failed");
     }

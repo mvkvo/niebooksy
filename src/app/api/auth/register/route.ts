@@ -1,4 +1,3 @@
-import { SignupFormSchema } from "@lib/definitions";
 import { hash } from "bcrypt";
 import { sql } from "@vercel/postgres";
 import { NextResponse } from "next/server";
@@ -12,6 +11,7 @@ export async function POST(request: Request) {
 
     const response =
       await sql`INSERT INTO users (email, password) VALUES (${email}, ${hashedPassword})`;
+    console.log(response);
   } catch (e) {
     console.log({ e });
   }

@@ -1,7 +1,6 @@
 "use client";
 
 import { SignupFormSchema, FormState } from "@lib/definitions";
-import { error } from "console";
 import { useActionState } from "react";
 
 export const SignupForm = () => {
@@ -37,7 +36,7 @@ export const SignupForm = () => {
       // Process response here
       console.log("Registration Successful", response);
       alert("Registration Successful");
-    } catch (error: any) {
+    } catch (error) {
       console.error("Registration Failed:", error);
       alert("Registration Failed");
     }
