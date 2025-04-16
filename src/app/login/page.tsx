@@ -2,7 +2,7 @@ import LoginForm from "@ui/auth/login-form";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-export const LoginPage = async () => {
+export default async function LoginPage() {
   const session = await getServerSession();
   console.log({ session });
 
@@ -11,6 +11,4 @@ export const LoginPage = async () => {
   }
 
   return <LoginForm />;
-};
-
-export default LoginPage;
+}

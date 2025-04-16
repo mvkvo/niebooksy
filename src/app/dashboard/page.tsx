@@ -1,7 +1,7 @@
 import { LogoutButton } from "@ui/auth/logout-button";
 import { getServerSession } from "next-auth";
 
-export const DashboardPage = async () => {
+export default async function DashboardPage() {
   const session = await getServerSession();
 
   return (
@@ -10,6 +10,4 @@ export const DashboardPage = async () => {
       <LogoutButton />
     </div>
   );
-};
-
-export default DashboardPage;
+}
