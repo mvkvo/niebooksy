@@ -4,18 +4,11 @@ export default withAuth({
   pages: { signIn: "/login" },
   callbacks: {
     authorized({ token, req }) {
-      // jeżeli to fetch danych RSC – zostawiamy dostęp
-      const isRsc =
-        req.headers.get("x-nextjs-data") === "1" ||
-        req.nextUrl.searchParams.has("_rsc");
-      if (isRsc) return true;
-
-      // w pozostałych przypadkach wymaga tokenu
+      // pozwól na wewnętrzne fetchy RSC
+      if (req.nextUrl.searchParams.has("_rsc")) return true;
       return Boolean(token);
     },
   },
 });
 
-export const config = {
-  matcher: ["/dashboard/:path*"],
-};
+export const config = { matcher: ["/dashboard/:path*"] };
