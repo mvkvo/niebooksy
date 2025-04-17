@@ -11,6 +11,7 @@ const handler = NextAuth({
   pages: {
     signIn: "/login",
   },
+  debug: !isProd,
   providers: [
     CredentialsProvider({
       name: "Credentials",
