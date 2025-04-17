@@ -1,14 +1,13 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
+
 import { signIn } from "next-auth/react";
 import { LoginFormSchema } from "@lib/definitions";
 
 type FieldErrors = Record<string, string[]>;
 
 export default function LoginForm() {
-  const router = useRouter();
   const [errors, setErrors] = useState<FieldErrors>({});
   const [message, setMessage] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -51,7 +50,7 @@ export default function LoginForm() {
     }
 
     // 3) Sukces → przejście na dashboard
-    router.push(res.url!);
+    window.location.href = res.url!;
   };
 
   return (
