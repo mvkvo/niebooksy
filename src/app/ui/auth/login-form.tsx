@@ -31,6 +31,8 @@ export const LoginForm = () => {
         callbackUrl: "/dashboard",
       });
 
+      console.log("res=", response);
+
       if (!response) {
         throw new Error("Network error");
       }
