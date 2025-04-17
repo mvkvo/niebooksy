@@ -45,7 +45,6 @@ export const LoginForm = () => {
 
       // Process response here
       console.log("Login Successful", response);
-      alert("Login Successful");
       router.push("/dashboard");
     } catch (error) {
       console.error("Login Failed:", error);
