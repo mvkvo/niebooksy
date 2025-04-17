@@ -2,10 +2,12 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { sql } from "@vercel/postgres";
 import { compare } from "bcrypt";
+const isProd = process.env.NODE_ENV === "production";
 
 const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   session: { strategy: "jwt" },
+  useSecureCookies: isProd,
   pages: {
     signIn: "/login",
   },
@@ -43,13 +45,11 @@ const handler = NextAuth({
   ],
   callbacks: {
     async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-      }
+      if (user) token.id = user.id;
       return token;
     },
     async session({ session, token }) {
-      session.user.id = token.id;
+      session.user.id = token.id as string;
       return session;
     },
   },

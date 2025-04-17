@@ -1,63 +1,75 @@
 "use client";
 
-import { FormState, LoginFormSchema } from "@lib/definitions";
-import { useActionState } from "react";
-import { signIn } from "next-auth/react";
+import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { LoginFormSchema } from "@lib/definitions";
 
-export const LoginForm = () => {
-  const [state, action, pending] = useActionState(login, undefined);
+type FieldErrors = Record<string, string[]>;
+
+export default function LoginForm() {
   const router = useRouter();
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [message, setMessage] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  async function login(state: FormState, formData: FormData) {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setErrors({});
+    setMessage("");
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
     const email = formData.get("email")?.toString() || "";
     const password = formData.get("password")?.toString() || "";
 
-    const validatedFields = LoginFormSchema.safeParse({
+    // Walidacja przez Zod
+    const parsed = LoginFormSchema.safeParse({ email, password });
+    if (!parsed.success) {
+      setErrors(parsed.error.flatten().fieldErrors);
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Próba logowania
+    const response = await signIn("credentials", {
+      redirect: false,
       email,
       password,
+      callbackUrl: "/dashboard",
     });
 
-    if (!validatedFields.success)
-      return {
-        errors: validatedFields.error.flatten().fieldErrors,
-      };
-
-    try {
-      const response = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
-      });
-
-      console.log("res=", response);
-
-      if (!response) {
-        throw new Error("Network error");
-      }
-
-      if (!response.ok) {
-        return {
-          message: "Złe dane logowania",
-        };
-      } else {
-        alert("Zalogowano pomyślnie.");
-        router.push(response.url as string);
-      }
-    } catch (error) {
-      return {
-        message: `Błąd logowania: ${error}`,
-      };
+    if (!response) {
+      setMessage("Błąd sieci, spróbuj ponownie.");
+      setIsSubmitting(false);
+      return;
     }
-  }
+    if (!response.ok) {
+      setMessage("Nieprawidłowy email lub hasło.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Sukces: przekierowanie
+    router.push(response.url!);
+  };
 
   return (
-    <form action={action}>
+    <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label htmlFor="email">Email</label>
-        <input id="email" name="email" />
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          className="w-full p-2 border rounded"
+        />
+        {errors.email && (
+          <p className="text-red-600">{errors.email.join(", ")}</p>
+        )}
       </div>
-      {state?.errors?.email && <p>{state.errors.email}</p>}
+
       <div>
         <label htmlFor="password">Hasło</label>
         <input
@@ -65,13 +77,23 @@ export const LoginForm = () => {
           name="password"
           type="password"
           autoComplete="on"
+          required
+          className="w-full p-2 border rounded"
         />
+        {errors.password && (
+          <p className="text-red-600">{errors.password.join(", ")}</p>
+        )}
       </div>
-      <button disabled={pending} type="submit">
-        Zaloguj się
+
+      {message && <p className="text-red-600">{message}</p>}
+
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full p-2 bg-blue-600 text-white rounded disabled:opacity-50"
+      >
+        {isSubmitting ? "Ładowanie…" : "Zaloguj się"}
       </button>
     </form>
   );
-};
-
-export default LoginForm;
+}
