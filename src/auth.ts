@@ -23,19 +23,20 @@ const handler = NextAuth({
           SELECT * FROM users WHERE email = ${credentials.email}
         `;
         const user = response.rows[0];
+        if (!user) return null;
+
         const passwordCorrect = await compare(
           credentials?.password || "",
           user.password
         );
-        if (passwordCorrect) {
-          return {
-            id: user.id,
-            email: user.email,
-          };
-        }
+
+        if (!passwordCorrect) return null;
 
         console.log("credentials", credentials);
-        return null;
+        return {
+          id: user.id,
+          email: user.email,
+        };
       },
     }),
   ],
@@ -48,7 +49,7 @@ const handler = NextAuth({
     },
     async session({ session, token }) {
       if (token) {
-        (session.user as any).id = token.id = token.id;
+        session.user.id = token.id as string;
       }
       return session;
     },
