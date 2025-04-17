@@ -46,7 +46,7 @@ export const LoginForm = () => {
       console.log("Login Successful", response);
     } catch (error) {
       console.error("Login Failed:", error);
-      alert("Login Failed");
+      alert(`login failed: ${error}`);
     }
   };
 
