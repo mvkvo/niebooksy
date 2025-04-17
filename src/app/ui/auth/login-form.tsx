@@ -3,11 +3,9 @@
 import { FormState, LoginFormSchema } from "@lib/definitions";
 import { useActionState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 export const LoginForm = () => {
   const [state, action, pending] = useActionState(login, undefined);
-  const router = useRouter();
 
   async function login(state: FormState, formData: FormData) {
     const email = formData.get("email");
@@ -37,7 +35,6 @@ export const LoginForm = () => {
       // Process response here
       console.log("Login Successful", response);
       alert("Login Successful");
-      router.push("/dashboard");
     } catch (error) {
       console.error("Login Failed:", error);
       alert("Login Failed");
