@@ -11,7 +11,7 @@ export default function LoginForm() {
   const router = useRouter();
   const [errors, setErrors] = useState<FieldErrors>({});
   const [message, setMessage] = useState<string>("");
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,11 +19,11 @@ export default function LoginForm() {
     setMessage("");
     setIsSubmitting(true);
 
-    const formData = new FormData(e.currentTarget);
-    const email = formData.get("email")?.toString() || "";
-    const password = formData.get("password")?.toString() || "";
+    const fd = new FormData(e.currentTarget);
+    const email = fd.get("email")?.toString() || "";
+    const password = fd.get("password")?.toString() || "";
 
-    // Walidacja przez Zod
+    // 1) Walidacja
     const parsed = LoginFormSchema.safeParse({ email, password });
     if (!parsed.success) {
       setErrors(parsed.error.flatten().fieldErrors);
@@ -31,27 +31,27 @@ export default function LoginForm() {
       return;
     }
 
-    // Próba logowania
-    const response = await signIn("credentials", {
+    // 2) Próba zalogowania
+    const res = await signIn("credentials", {
       redirect: false,
       email,
       password,
       callbackUrl: "/dashboard",
     });
 
-    if (!response) {
+    if (!res) {
       setMessage("Błąd sieci, spróbuj ponownie.");
       setIsSubmitting(false);
       return;
     }
-    if (!response.ok) {
+    if (!res.ok) {
       setMessage("Nieprawidłowy email lub hasło.");
       setIsSubmitting(false);
       return;
     }
 
-    // Sukces: przekierowanie
-    router.push(response.url!);
+    // 3) Sukces → przejście na dashboard
+    router.push(res.url!);
   };
 
   return (
