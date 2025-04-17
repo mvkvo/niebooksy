@@ -12,17 +12,19 @@ const handler = NextAuth({
     signIn: "/login",
   },
   debug: !isProd,
-  cookies: {
-    sessionToken: {
-      name: "__Secure-next-auth.session-token",
-      options: {
-        httpOnly: true,
-        secure: true,
-        path: "/",
-        sameSite: "none",
-      },
-    },
-  },
+  cookies: isProd
+    ? {
+        sessionToken: {
+          name: "__Secure-next-auth.session-token",
+          options: {
+            httpOnly: true,
+            secure: true,
+            path: "/",
+            sameSite: "none",
+          },
+        },
+      }
+    : undefined,
   providers: [
     CredentialsProvider({
       name: "Credentials",
