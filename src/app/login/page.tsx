@@ -7,7 +7,7 @@ export default async function LoginPage() {
   console.log({ session });
 
   if (session) {
-    redirect("/");
+    redirect("/dashboard");
   }
 
   return <LoginForm />;
