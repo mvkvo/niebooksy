@@ -10,8 +10,8 @@ export const LoginForm = () => {
   const router = useRouter();
 
   async function login(state: FormState, formData: FormData) {
-    const email = formData.get("email");
-    const password = formData.get("password");
+    const email = formData.get("email")?.toString() || "";
+    const password = formData.get("password")?.toString() || "";
 
     const validatedFields = LoginFormSchema.safeParse({
       email,
@@ -28,6 +28,7 @@ export const LoginForm = () => {
         email,
         password,
         redirect: false,
+        callbackUrl: "/dashboard",
       });
 
       if (!response) {
@@ -35,13 +36,17 @@ export const LoginForm = () => {
       }
 
       if (!response.ok) {
-        alert("Złe dane logowania");
+        return {
+          message: "Złe dane logowania",
+        };
       } else {
         alert("Zalogowano pomyślnie.");
-        router.push(response.url ?? "/dashboard");
+        router.push(response.url as string);
       }
     } catch (error) {
-      alert(`{Login Failed: ${error}}`);
+      return {
+        message: `Błąd logowania: ${error}`,
+      };
     }
   }
 
