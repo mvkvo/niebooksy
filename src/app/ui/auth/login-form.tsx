@@ -33,10 +33,8 @@ export const LoginForm = () => {
 
     try {
       const response = await signIn("credentials", {
-        redirect: false,
         email,
         password,
-        callbackUrl: "/dashboard",
       });
       console.log(response);
 
