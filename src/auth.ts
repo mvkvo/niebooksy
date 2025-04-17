@@ -1,7 +1,10 @@
-import NextAuth from "next-auth";
+import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { sql } from "@vercel/postgres";
 import { compare } from "bcrypt";
+import type { Session, User } from "next-auth";
+import type { JWT } from "next-auth/jwt";
+import { AdapterUser } from "next-auth/adapters";
 
 const handler = NextAuth({
   session: { strategy: "jwt" },
@@ -48,9 +51,7 @@ const handler = NextAuth({
       return token;
     },
     async session({ session, token }) {
-      if (token) {
-        session.user.id = token.id as string;
-      }
+      session.user.id = token.id;
       return session;
     },
   },
