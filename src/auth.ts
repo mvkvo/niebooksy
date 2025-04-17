@@ -2,26 +2,10 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { sql } from "@vercel/postgres";
 import { compare } from "bcrypt";
-const isProduction = process.env.NODE_ENV === "production";
 
 const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   session: { strategy: "jwt" },
-  useSecureCookies: isProduction,
-  cookies: isProduction
-    ? {
-        sessionToken: {
-          name: `__Secure-next-auth.session-token`,
-          options: {
-            httpOnly: true,
-            sameSite: "lax",
-            path: "/",
-            secure: true,
-            domain: "niebooksy.vercel.app",
-          },
-        },
-      }
-    : undefined,
   pages: {
     signIn: "/login",
   },

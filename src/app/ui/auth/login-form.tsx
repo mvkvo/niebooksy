@@ -28,7 +28,6 @@ export const LoginForm = () => {
         email,
         password,
         redirect: false,
-        callbackUrl: "/dashboard",
       });
 
       console.log("res=", response);
