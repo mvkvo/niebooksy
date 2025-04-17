@@ -33,6 +33,7 @@ export const LoginForm = () => {
 
     try {
       const response = await signIn("credentials", {
+        redirect: false,
         email,
         password,
       });
