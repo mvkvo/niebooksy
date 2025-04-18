@@ -7,11 +7,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export const LoginForm = () => {
-  const [email, setEmail] = useState<string | null>(null);
-  const [password, setPassword] = useState<string | null>(null);
-
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -57,7 +53,9 @@ export const LoginForm = () => {
           autoComplete="on"
         />
       </div>
-      <button type="submit">Zaloguj się</button>
+      <button disabled={isLoading} type="submit">
+        {isLoading ? "Logowanie..." : "Zaloguj się"}
+      </button>
     </form>
   );
 };

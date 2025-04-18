@@ -27,12 +27,20 @@ export const SignupFormSchema = z
     path: ["repassword"],
   });
 
+export const AnnouncementFormSchema = z.object({
+  content: z
+    .string()
+    .min(10, { message: "Oferta musi zawierać co najmniej 10 znaków" })
+    .max(500, { message: "Oferta może zawierać maksymalnie 500 znaków" }),
+});
+
 export type FormState =
   | {
       errors?: {
         email?: string[];
         password?: string[];
         repassword?: string[];
+        content?: string[];
       };
       message?: string;
     }
