@@ -15,7 +15,7 @@ export const Announcements = () => {
   return (
     <div>
       <br />
-      <h3>Oferty</h3>
+      <h3>Ogłoszenia:</h3>
       <br />
       <div>
         {announcements.map(({ id, title, content, created_at }) => (

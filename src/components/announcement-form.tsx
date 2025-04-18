@@ -44,7 +44,7 @@ export const AnnouncementForm = () => {
 
   return (
     <form action={action}>
-      <h3>Dodaj ofertę</h3>
+      <h3>Dodaj ogłoszenie</h3>
       <div>
         <label htmlFor="title">Tytuł ogłoszenia</label>
         <input id="title" name="title" />
