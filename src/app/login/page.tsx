@@ -1,14 +1,14 @@
-import LoginForm from "@ui/auth/login-form";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
+import { Suspense } from "react";
+import LoginForm from "@components/auth/login-form";
+import LoginError from "@components/auth/login-error";
 
-export default async function LoginPage() {
-  const session = await getServerSession();
-  console.log({ session });
-
-  if (session) {
-    redirect("/dashboard");
-  }
-
-  return <LoginForm />;
+export default function LoginPage() {
+  return (
+    <div>
+      <Suspense fallback={<div>Ładowanie…</div>}>
+        <LoginError />
+      </Suspense>
+      <LoginForm />
+    </div>
+  );
 }

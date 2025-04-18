@@ -20,7 +20,7 @@ const authOptions: NextAuthOptions = {
         const response = await sql`
         SELECT * FROM users WHERE email = ${credentials.email}
       `;
-        console.log("res = ", response);
+
         const user = response.rows[0];
         if (!user) return null;
 
@@ -45,15 +45,11 @@ const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-      }
+      if (user) token.id = user.id;
       return token;
     },
     async session({ session, token }) {
-      if (token?.id) {
-        session.user.id = token.id;
-      }
+      if (token?.id) session.user.id = token.id;
       return session;
     },
   },

@@ -7,16 +7,15 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState<string | null>(null);
+  const [password, setPassword] = useState<string | null>(null);
+
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    setError("");
     const form = e.currentTarget;
     const formData = new FormData(form);
     const email = formData.get("email")?.toString() || "";
@@ -35,18 +34,11 @@ export const LoginForm = () => {
       const response = await signIn("credentials", {
         email,
         password,
+        callbackUrl: "/dashboard",
       });
       console.log(response);
-
-      if (!response) {
-        throw new Error("Network response was not ok");
-      }
-
-      // Process response here
-      console.log("Login Successful", response);
     } catch (error) {
       console.error("Login Failed:", error);
-      alert(`login failed: ${error}`);
     }
   };
 
@@ -56,7 +48,6 @@ export const LoginForm = () => {
         <label htmlFor="email">Email</label>
         <input id="email" name="email" />
       </div>
-      {/* {state?.errors?.email && <p>{state.errors.email}</p>} */}
       <div>
         <label htmlFor="password">Hasło</label>
         <input

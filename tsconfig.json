@@ -21,7 +21,7 @@
     ],
     "paths": {
       "@*": ["./src/app/*"],
-      "@auth": ["./src/auth"]
+      "@components/*": ["./src/components/*"],
     },
     "types": ["next-auth"],
     "typeRoots": ["./src/types", "./node_modules/@types"],
