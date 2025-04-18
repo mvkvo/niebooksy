@@ -18,8 +18,8 @@ export const Announcements = () => {
       <h3>Oferty</h3>
       <br />
       <div>
-        {announcements.map(({ title, content, created_at }) => (
-          <div>
+        {announcements.map(({ id, title, content, created_at }) => (
+          <div key={id}>
             <p>
               <b>title: </b>
               {title}
