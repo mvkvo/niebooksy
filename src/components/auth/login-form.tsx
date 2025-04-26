@@ -16,7 +16,6 @@ export const LoginForm = () => {
     const formData = new FormData(form);
     const email = formData.get("email")?.toString() || "";
     const password = formData.get("password")?.toString() || "";
-    console.log({ email, password });
 
     const validatedFields = LoginFormSchema.safeParse({
       email,

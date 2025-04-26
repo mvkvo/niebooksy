@@ -10,7 +10,6 @@ export async function POST(request: Request) {
   try {
     const userId = session.user.id;
     const { title, description, start, end } = await request.json();
-    console.log(userId, title, description, start, end);
     const response =
       await sql`INSERT INTO events (user_id, title, description, start, "end", created_at) VALUES (${userId}, ${title}, ${description}, ${start}, ${end}, CURRENT_TIMESTAMP)`;
     console.log(response);

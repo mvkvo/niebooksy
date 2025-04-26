@@ -28,9 +28,8 @@ export const Calendar = () => {
         if (!res.ok) {
           throw new Error("Błąd pobierania wydarzeń");
         }
-
         const data = await res.json();
-        console.log(data);
+
         if (data) {
           data.map((row: EventProps) => {
             setEvents((prevEvents) => [
@@ -62,7 +61,7 @@ export const Calendar = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          title: eventDescriptionInputValue,
+          title: eventTitleInputValue,
           description: eventDescriptionInputValue,
           start: startEventTime,
           end: endEventTime,
@@ -93,11 +92,6 @@ export const Calendar = () => {
   };
 
   const handleSelect = (selectInfo: { start: Date; end: Date }) => {
-    console.log("start:", selectInfo.start);
-    console.log(
-      "start formated:",
-      format(selectInfo.start, "yyyy-MM-dd HH:mm:ss")
-    );
     setStartEventTime(format(selectInfo.start, "yyyy-MM-dd HH:mm:ss"));
     setEndEventTime(format(selectInfo.end, "yyyy-MM-dd HH:mm:ss"));
     setModalOpen(true);
