@@ -6,8 +6,8 @@ import Link from "next/link";
 
 export default async function DashboardPage() {
   const session = await getSession();
-  const userId = session?.user.id ? parseInt(session?.user.id, 10) : undefined;
-  console.log("user i d:", userId);
+  //const userId = session?.user.id ? parseInt(session?.user.id, 10) : undefined;
+
   return (
     <div>
       <p>Hello, {session?.user?.email}!</p>
@@ -21,7 +21,7 @@ export default async function DashboardPage() {
       </div>
       <br />
       <div style={{ height: "800px" }}>
-        <Calendar userId={userId} />
+        <Calendar />
       </div>
     </div>
   );

@@ -11,8 +11,8 @@ export interface CalendarProps {
 }
 
 export interface EventProps {
-  id: Number;
-  user_id: Number;
+  id: number;
+  user_id: number;
   title: string;
   description: string;
   start: Date;

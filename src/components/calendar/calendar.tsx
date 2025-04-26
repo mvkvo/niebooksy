@@ -3,12 +3,13 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import { CalendarProps, EventInputProps, EventProps } from "./models";
+import { EventInputProps, EventProps } from "./models";
 import { useEffect, useState } from "react";
 import { Modal } from "@/components/modal";
 import { format } from "date-fns";
+import { EventContentArg } from "@fullcalendar/core";
 
-export const Calendar = ({ userId }: CalendarProps) => {
+export const Calendar = () => {
   const [events, setEvents] = useState<EventInputProps[]>([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [eventTitleInputValue, setEventTitleInputValue] = useState("");
@@ -102,7 +103,7 @@ export const Calendar = ({ userId }: CalendarProps) => {
     setModalOpen(true);
   };
 
-  const renderEventContent = (eventInfo: any) => {
+  const renderEventContent = (eventInfo: EventContentArg) => {
     return (
       <div>
         <strong>{eventInfo.event.title}</strong>

@@ -1,7 +1,5 @@
 import { sql } from "@vercel/postgres";
 import { NextResponse } from "next/server";
-import { format } from "date-fns";
-import { getServerSession } from "next-auth";
 import getSession from "@/lib/getSession";
 
 export async function POST(request: Request) {
