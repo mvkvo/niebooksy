@@ -29,6 +29,12 @@ a {
   text-decoration: none;
 }
 
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
