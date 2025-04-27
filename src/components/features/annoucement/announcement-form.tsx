@@ -1,6 +1,6 @@
 "use client";
 
-import { AnnouncementFormSchema, FormState } from "@lib/definitions";
+import { AnnouncementFormSchema, FormState } from "@/lib/definitions";
 import { useActionState } from "react";
 import { useSession } from "next-auth/react";
 
@@ -33,7 +33,6 @@ export const AnnouncementForm = () => {
         throw new Error("Network response was not ok");
       }
 
-      // Process response here
       console.log("Announcement added", response);
       alert("Announcement added");
     } catch (error) {

@@ -1,4 +1,5 @@
 "use client";
+
 import { useSearchParams } from "next/navigation";
 
 export default function LoginError() {
@@ -9,5 +10,6 @@ export default function LoginError() {
     Default: "Wystąpił nieoczekiwany błąd.",
   };
   const error = errorCode ? messages[errorCode] || messages.Default : null;
+
   return error ? <p className="error">{error}</p> : null;
 }

@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import { LoginFormSchema } from "@lib/definitions";
+import { LoginFormSchema } from "@/lib/definitions";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 export const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);

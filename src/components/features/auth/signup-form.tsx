@@ -1,6 +1,6 @@
 "use client";
 
-import { SignupFormSchema, FormState } from "@lib/definitions";
+import { SignupFormSchema, FormState } from "@/lib/definitions";
 import { useActionState } from "react";
 
 export const SignupForm = () => {
@@ -23,7 +23,7 @@ export const SignupForm = () => {
       };
 
     try {
-      const response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

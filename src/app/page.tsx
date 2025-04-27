@@ -2,8 +2,8 @@ import "./main.scss";
 
 import Link from "next/link";
 import { getServerSession } from "next-auth";
-import { LogoutButton } from "@/components/auth/logout-button";
-import Announcements from "@/components/announcements";
+import { LogoutButton } from "@/components/features/auth/logout-button";
+import Announcements from "@/components/features/annoucement/announcements";
 
 export default async function Home() {
   const session = await getServerSession();

@@ -1,11 +1,12 @@
 "use client";
+
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { EventInputProps, EventProps } from "./models";
 import { useEffect, useState } from "react";
-import { Modal } from "@/components/modal";
+import { Modal } from "@/components/ui/modal";
 import { format } from "date-fns";
 import { EventContentArg } from "@fullcalendar/core";
 
@@ -67,9 +68,8 @@ export const Calendar = () => {
           end: endEventTime,
         }),
       });
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+
+      if (!response.ok) throw new Error("Network response was not ok");
 
       setEvents((prevEvents) => [
         ...prevEvents,

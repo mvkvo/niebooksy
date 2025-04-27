@@ -1,6 +1,7 @@
 "use client";
-import "./modal.scss";
+
 import { ModalProps } from "./models";
+import "./modal.scss";
 
 export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
   if (!isOpen) return null;

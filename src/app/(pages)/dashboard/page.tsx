@@ -1,12 +1,11 @@
-import AnnouncementForm from "@/components/announcement-form";
-import { LogoutButton } from "@/components/auth/logout-button";
-import { Calendar } from "@/components/calendar/calendar";
-import getSession from "@/lib/getSession";
 import Link from "next/link";
+import getSession from "@/lib/getSession";
+import AnnouncementForm from "@/components/features/annoucement/announcement-form";
+import { LogoutButton } from "@/components/features/auth/logout-button";
+import { Calendar } from "@/components/ui/calendar";
 
 export default async function DashboardPage() {
   const session = await getSession();
-  //const userId = session?.user.id ? parseInt(session?.user.id, 10) : undefined;
 
   return (
     <div>
