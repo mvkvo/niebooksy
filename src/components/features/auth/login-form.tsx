@@ -3,6 +3,8 @@
 import { LoginFormSchema } from "@/lib/definitions";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -37,22 +39,11 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" name="email" />
-      </div>
-      <div>
-        <label htmlFor="password">Hasło</label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          autoComplete="on"
-        />
-      </div>
-      <button disabled={isLoading} type="submit">
+      <Input id="email" label="Email" name="email" />
+      <Input id="password" label="Hasło" name="password" inputType="password" />
+      <Button disabled={isLoading} type="submit" hasArrow={false}>
         {isLoading ? "Logowanie..." : "Zaloguj się"}
-      </button>
+      </Button>
     </form>
   );
 };

@@ -2,6 +2,7 @@
 
 import { ModalProps } from "./models";
 import "./modal.scss";
+import { Button } from "@/components/ui/button";
 
 export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
   if (!isOpen) return null;
@@ -9,9 +10,9 @@ export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <button className="modal-close" onClick={onClose}>
+        <Button className="modal-close" onClick={onClose}>
           x
-        </button>
+        </Button>
         {title && <h2 className="modal-title">{title}</h2>}
         <div className="modal-body">{children}</div>
       </div>

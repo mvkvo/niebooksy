@@ -1,0 +1,43 @@
+@import "./button.tokens.scss";
+
+.btn {
+  --btn-font-size: var(--button-large-font-size);
+  --btn-padding: var(--button-large-padding);
+  --btn-background: var(--button-background-color);
+  --btn-font-color: var(--button-font-color);
+  --btn-height: var(--button-large-height);
+
+  font-family: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  gap: 2px;
+  cursor: pointer;
+  border: 0;
+  height: var(--btn-height);
+  font-size: var(--btn-font-size);
+  padding: var(--btn-padding);
+  background: var(--btn-background);
+  color: var(--btn-font-color);
+
+  &--primary {
+  }
+  &--secondary {
+  }
+
+  &--large {
+    --btn-height: var(--button-large-height);
+    --btn-font-size: var(--button-large-font-size);
+    --btn-padding: var(--button-large-padding);
+  }
+
+  &--small {
+    --btn-height: var(--button-small-height);
+    --btn-font-size: var(--button-small-font-size);
+    --btn-padding: var(--button-small-padding);
+  }
+}

@@ -23,7 +23,8 @@
       "@*": ["./src/app/*"],
       "@/components/*": ["./src/components/*"],
       "@/types/*": ["./src/types/*"],
-      "@/lib/*": ["./src/lib/*"]
+      "@/lib/*": ["./src/lib/*"],
+      "@/assets/*": ["./src/assets/*"]
     },
     "types": ["next-auth"],
     "typeRoots": ["./src/types", "./node_modules/@types"],

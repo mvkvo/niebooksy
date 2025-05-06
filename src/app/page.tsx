@@ -1,26 +1,14 @@
+import { Announcements } from "@/components/features/annoucement";
+import hero_img from "@/assets/hero_img.png";
+import Image from "next/image";
+
 import "./main.scss";
 
-import Link from "next/link";
-import { getServerSession } from "next-auth";
-import { LogoutButton } from "@/components/features/auth/logout-button";
-import Announcements from "@/components/features/annoucement/announcements";
-
 export default async function Home() {
-  const session = await getServerSession();
   return (
-    <div>
-      <div className="menu">
-        {session ? (
-          <LogoutButton />
-        ) : (
-          <>
-            <Link href={"/login"}>Login</Link>
-            <Link href={"/signup"}>Sign Up</Link>
-          </>
-        )}
-        <Link href={"/dashboard"}>Dashboard</Link>
-      </div>
+    <>
+      <Image src={hero_img} alt="hero img" />
       <Announcements />
-    </div>
+    </>
   );
 }

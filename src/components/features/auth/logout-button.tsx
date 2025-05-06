@@ -1,9 +1,13 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { signOut } from "next-auth/react";
 
 export const LogoutButton = () => (
-  <button onClick={() => signOut({ callbackUrl: "/", redirect: true })}>
+  <Button
+    hasArrow={false}
+    onClick={() => signOut({ callbackUrl: "/", redirect: true })}
+  >
     Wyloguj
-  </button>
+  </Button>
 );

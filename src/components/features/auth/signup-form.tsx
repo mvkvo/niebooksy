@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { SignupFormSchema, FormState } from "@/lib/definitions";
 import { useActionState } from "react";
 
@@ -44,20 +46,8 @@ export const SignupForm = () => {
 
   return (
     <form action={action}>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" name="email" />
-      </div>
       {state?.errors?.email && <p>{state.errors.email}</p>}
-      <div>
-        <label htmlFor="password">Hasło</label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          autoComplete="on"
-        />
-      </div>
+      <Input id="email" label="Email" name="email" />
       {state?.errors?.password && (
         <div>
           <ul>
@@ -67,19 +57,19 @@ export const SignupForm = () => {
           </ul>
         </div>
       )}
-      <div>
-        <label htmlFor="repassword">Powtórz hasło</label>
-        <input
-          id="repassword"
-          name="repassword"
-          type="password"
-          autoComplete="on"
-        />
-        {state?.errors?.repassword && <p>{state.errors.repassword}</p>}
-      </div>
-      <button disabled={pending} type="submit">
+      <Input id="password" label="Hasło" name="password" inputType="password" />
+
+      {state?.errors?.repassword && <p>{state.errors.repassword}</p>}
+      <Input
+        id="repassword"
+        label="Powtórz hasło"
+        name="repassword"
+        inputType="password"
+      />
+
+      <Button disabled={pending} type="submit" hasArrow={false}>
         Zarejestruj się
-      </button>
+      </Button>
     </form>
   );
 };

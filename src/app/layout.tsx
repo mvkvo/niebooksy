@@ -1,16 +1,14 @@
 "use client";
 
-import { Geist, Geist_Mono } from "next/font/google";
+import { Saira_Condensed } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
+import { Header } from "@/components/layouts/header";
+import { Footer } from "@/components/layouts/footer";
+
 import "./main.scss";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const saira = Saira_Condensed({
+  weight: "500",
   subsets: ["latin"],
 });
 
@@ -21,8 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <SessionProvider>{children}</SessionProvider>
+      <body className={`${saira.className}`}>
+        <SessionProvider>
+          <Header />
+          <div className="main">{children}</div>
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );

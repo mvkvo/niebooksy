@@ -1,0 +1,36 @@
+@import "./header.tokens.scss";
+
+.header {
+  --header-el-font-color: var(--header-element-font-color);
+  --header-el-font-size: var(--header-element-font-size);
+
+  padding: var(--header-padding);
+
+  &__nav {
+    display: flex;
+    align-items: center;
+
+    &--desktop {
+      display: flex;
+      flex-direction: row;
+      gap: 2.75rem;
+      min-height: 1px;
+      list-style: none;
+      align-items: baseline;
+    }
+
+    &--element {
+      flex-grow: 1;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--header-el-font-color);
+      font-size: var(--header-el-font-size);
+    }
+
+    &--auth-elements {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+    }
+  }
+}

@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Modal } from "@/components/ui/modal";
 import { format } from "date-fns";
 import { EventContentArg } from "@fullcalendar/core";
+import { Button } from "@/components/ui/button";
 
 export const Calendar = () => {
   const [events, setEvents] = useState<EventInputProps[]>([]);
@@ -166,7 +167,7 @@ export const Calendar = () => {
             value={eventDescriptionInputValue}
             onChange={(e) => setEventDescriptionInputValue(e.target.value)}
           />
-          <button type="submit">Zapisz</button>
+          <Button type="submit">Zapisz</Button>
         </form>
       </Modal>
     </>

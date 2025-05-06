@@ -1,7 +1,6 @@
 import Link from "next/link";
 import getSession from "@/lib/getSession";
 import AnnouncementForm from "@/components/features/annoucement/announcement-form";
-import { LogoutButton } from "@/components/features/auth/logout-button";
 import { Calendar } from "@/components/ui/calendar";
 
 export default async function DashboardPage() {
@@ -13,8 +12,7 @@ export default async function DashboardPage() {
       <br />
       <Link href={"/"}>Homepage</Link>
       <br />
-      <LogoutButton />
-      <br />
+
       <div>
         <AnnouncementForm />
       </div>
