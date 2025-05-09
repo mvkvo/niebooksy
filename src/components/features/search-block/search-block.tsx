@@ -18,7 +18,10 @@ export const SearchBlock = ({ categories }: SearchBlockProps) => {
       <Select
         id="categories"
         variant="secondary"
-        options={categories}
+        options={categories.map((cat) => ({
+          id: cat.id,
+          name: cat.category_name,
+        }))}
         placeholder="kategoria"
       />
       <Input
