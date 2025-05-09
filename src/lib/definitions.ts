@@ -1,37 +1,43 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const LoginFormSchema = z.object({
-  email: z.string().email({ message: "Podaj prawidłowy email." }),
+  email: z.string().email({ message: 'Podaj prawidłowy email.' }),
 });
 
 export const SignupFormSchema = z
   .object({
-    email: z.string().email({ message: "Podaj prawidłowy email." }),
+    name: z
+      .string()
+      .max(25, { message: 'Imię może zawierać maksymalnie 25 znaków' }),
+    surname: z
+      .string()
+      .max(25, { message: 'Nazwisko może zawierać maksymalnie 25 znaków' }),
+    email: z.string().email({ message: 'Podaj prawidłowy email.' }),
     password: z
       .string()
-      .min(8, { message: "Hasło musi zawierać przynajmniej 8 znaków!" })
+      .min(8, { message: 'Hasło musi zawierać przynajmniej 8 znaków!' })
       .regex(/[a-zA-Z]/, {
-        message: "Hasło musi zawierać przynajmniej 1 literę",
+        message: 'Hasło musi zawierać przynajmniej 1 literę',
       })
-      .regex(/[0-9]/, { message: "Hasło musi zawierać przynajmniej 1 cyfrę!" })
+      .regex(/[0-9]/, { message: 'Hasło musi zawierać przynajmniej 1 cyfrę!' })
       .regex(/[^a-zA-Z0-9]/, {
-        message: "Hasło musi zawierać przynajmniej 1 znak specjalny!",
+        message: 'Hasło musi zawierać przynajmniej 1 znak specjalny!',
       })
       .trim(),
     repassword: z
       .string()
-      .min(1, { message: "Potwierdzenie hasła jest wymagane!" }),
+      .min(1, { message: 'Potwierdzenie hasła jest wymagane!' }),
   })
   .refine((data) => data.password === data.repassword, {
-    message: "Hasła muszą być takie same!",
-    path: ["repassword"],
+    message: 'Hasła muszą być takie same!',
+    path: ['repassword'],
   });
 
 export const AnnouncementFormSchema = z.object({
   content: z
     .string()
-    .min(10, { message: "Oferta musi zawierać co najmniej 10 znaków" })
-    .max(500, { message: "Oferta może zawierać maksymalnie 500 znaków" }),
+    .min(10, { message: 'Oferta musi zawierać co najmniej 10 znaków' })
+    .max(500, { message: 'Oferta może zawierać maksymalnie 500 znaków' }),
 });
 
 export type FormState =

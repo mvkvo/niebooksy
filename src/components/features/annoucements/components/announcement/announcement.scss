@@ -1,0 +1,70 @@
+@import './announcement.tokens.scss';
+
+.announcement {
+  --socials-icons-color: var(--announcement-socials-icons-color-light);
+  --owner-font-color: var(--announcement-owner-font-color-light);
+  --description-font-color: var(--announcement-description-font-color-light);
+
+  display: flex;
+  flex: 1;
+  gap: 2rem;
+  position: relative;
+
+  &__image {
+    img {
+      height: 100%;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0.5rem;
+
+    &__owner-name {
+      color: var(--owner-font-color);
+      font-size: 2rem;
+    }
+
+    &__description {
+      color: var(--description-font-color);
+      font-size: 1rem;
+      font-weight: 400;
+      flex-grow: 1;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* 👈 liczba linii */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    &__links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &--socials {
+        display: flex;
+        gap: 2rem;
+        font-size: 30px;
+        color: var(--socials-icons-color);
+
+        a {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  &:not(:last-child)::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    border-bottom: 1px solid #ffffff;
+    bottom: -1rem;
+    left: 0;
+  }
+}

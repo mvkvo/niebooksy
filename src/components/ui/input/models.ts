@@ -1,12 +1,13 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes } from 'react';
 
 export interface InputProps extends HTMLAttributes<HTMLInputElement> {
+  variant?: 'primary' | 'secondary';
   className?: string;
   isHidden?: boolean;
   isDisabled?: boolean;
-  inputType?: "password" | "text";
+  inputType?: 'password' | 'text';
   id: string;
-  label: string;
+  label?: string;
   description?: string;
   tooltipText?: string;
   name: string;

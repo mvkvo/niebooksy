@@ -1,10 +1,12 @@
-@import "./header.tokens.scss";
+@import './header.tokens.scss';
 
 .header {
-  --header-el-font-color: var(--header-element-font-color);
-  --header-el-font-size: var(--header-element-font-size);
+  --header-fg: var(--header-element-font-color-light);
 
-  padding: var(--header-padding);
+  padding-top: 2rem;
+  min-height: var(--header-minimal-height);
+  display: flex;
+  align-items: center;
 
   &__nav {
     display: flex;
@@ -23,8 +25,8 @@
       flex-grow: 1;
       text-transform: uppercase;
       font-weight: 700;
-      color: var(--header-el-font-color);
-      font-size: var(--header-el-font-size);
+      color: var(--header-fg);
+      font-size: var(--header-element-font-size);
     }
 
     &--auth-elements {

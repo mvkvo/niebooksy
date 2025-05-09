@@ -1,0 +1,32 @@
+@import './select.tokens.scss';
+
+.select {
+  --line-color: var(--select-primary-line-color-light);
+  --font-color: var(--select-primary-font-color-light);
+
+  padding: 10px 8px;
+
+  select {
+    border: none;
+    color: var(--font-color);
+    font-size: var(--select-label-font-size);
+    border-bottom: 1px solid var(--line-color);
+    width: 100%;
+    font-family: inherit;
+    text-transform: uppercase;
+    padding: 4px 0px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  /*   &--primary {
+  }
+ */
+
+  &--secondary {
+    --line-color: var(--select-secondary-line-color-light);
+    --font-color: var(--select-secondary-font-color-light);
+  }
+}

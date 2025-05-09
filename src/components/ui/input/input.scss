@@ -1,21 +1,23 @@
-@import "./input.tokens.scss";
+@import './input.tokens.scss';
 
 .input-field {
-  --label-font-color: var(--input-label-font-color);
-  --label-font-size: var(--input-label-font-size);
-  --container-bg: var(--input-container-background-color);
+  --container-bg: var(--input-primary-container-background-color-light);
   --container-shadow: var(--input-container-shadow);
+  --label-font-color: var(--input-label-font-color-light);
+  --placeholder-font-color: var(--input-placeholder-font-color-light);
+  --line-color: var(--input-primary-line-color-light);
 
   display: flex;
   flex-direction: column;
   text-transform: uppercase;
   color: var(--label-font-color);
-  font-size: var(--label-font-size);
+  font-size: var(--input-label-font-size);
+  width: inherit;
 
   &__container {
-    height: var(--input-container-height);
-    background: var(--container-bg);
+    background-color: var(--container-bg);
     box-shadow: var(--container-shadow);
+
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -24,11 +26,29 @@
     input {
       background: transparent;
       border: 0;
-      border-bottom: 1px solid #ffffff;
+      border-bottom: 1px solid var(--line-color);
       font-family: inherit;
       padding: 4px;
       flex-grow: 1;
-      font-size: 20px;
+      font-size: inherit;
+      width: 100%;
+
+      &::placeholder {
+        color: var(--placeholder-font-color);
+        text-transform: uppercase;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &--secondary {
+    .input-field__container {
+      --container-bg: transparent;
+      --container-shadow: none;
+      --line-color: var(--input-secondary-line-color-light);
     }
   }
 }
