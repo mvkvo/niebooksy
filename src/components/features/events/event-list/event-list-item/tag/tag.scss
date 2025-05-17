@@ -1,0 +1,14 @@
+@import './tag.tokens.scss';
+
+.event__tag {
+  --bg-color: var(--tag-background-color-light);
+  --fg-color: var(--tag-font-color-light);
+
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  font-size: 12px;
+  font-weight: 700;
+  width: max-content;
+  padding: 2px 1rem;
+  text-transform: uppercase;
+}

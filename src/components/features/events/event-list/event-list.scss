@@ -1,0 +1,12 @@
+@import './event-list.tokens.scss';
+
+.event-list {
+  --border-color: var(--event-list-border-color-light);
+
+  border: 3px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  padding: 2rem;
+}

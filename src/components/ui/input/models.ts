@@ -1,11 +1,12 @@
 import { HTMLAttributes } from 'react';
 
-export interface InputProps extends HTMLAttributes<HTMLInputElement> {
+export interface InputProps
+  extends HTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   variant?: 'primary' | 'secondary';
   className?: string;
   isHidden?: boolean;
   isDisabled?: boolean;
-  inputType?: 'password' | 'text';
+  inputType?: 'password' | 'text' | 'textarea';
   id: string;
   label?: string;
   description?: string;
@@ -14,5 +15,6 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement> {
   value?: string;
   defaultValue?: string;
   placeholder?: string;
-  errorMessage?: string;
+  errorMessage?: string[];
+  autocomplete?: string;
 }

@@ -1,0 +1,32 @@
+.sidebar {
+  ul {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    padding: 0.75rem;
+    border-right: 3px solid #ffffff;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--active {
+      border: 3px solid #ffffff;
+      border-right: none;
+
+      .typography {
+        color: #fe4a6b;
+        font-weight: 700;
+      }
+    }
+
+    &:last-child {
+      cursor: inherit;
+      flex-grow: 1;
+    }
+  }
+}

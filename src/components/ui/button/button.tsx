@@ -1,50 +1,58 @@
-"use client";
+'use client';
 
-import { forwardRef, useEffect } from "react";
-import { ButtonProps } from "./models";
-import classNames from "classnames";
-import { FaLongArrowAltRight } from "react-icons/fa";
+import { forwardRef } from 'react';
+import { ButtonProps } from './models';
+import classNames from 'classnames';
+import { FaLongArrowAltRight } from 'react-icons/fa';
+import Link from 'next/link';
 
-import "./button.scss";
+import './button.scss';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      variant = "primary",
-      size = "large",
-      hasArrow = true,
-      className = "",
+      variant = 'primary',
+      size = 'large',
+      hasArrow = false,
+      href,
+      className = '',
       children,
       onClick,
       disabled = false,
-      type = "button",
+      type = 'button',
       ...rest
     },
     ref
   ) => {
-    useEffect(() => {}, []);
+    const classes = classNames(
+      'btn',
+      `btn--${variant}`,
+      `btn--${size}`,
+      className
+    );
 
-    return (
-      <>
-        <button
-          className={classNames(
-            "btn",
-            `btn--${variant}`,
-            `btn--${size}`,
-            className
-          )}
-          onClick={onClick}
-          disabled={disabled}
-          type={type}
-          ref={ref}
-          {...rest}
-        >
+    if (href)
+      return (
+        <Link href={href} className={classes}>
           {children}
           {hasArrow && <FaLongArrowAltRight />}
-        </button>
-      </>
+        </Link>
+      );
+
+    return (
+      <button
+        className={classes}
+        onClick={onClick}
+        disabled={disabled}
+        type={type}
+        ref={ref}
+        {...rest}
+      >
+        {children}
+        {hasArrow && <FaLongArrowAltRight />}
+      </button>
     );
   }
 );
 
-Button.displayName = "Button";
+Button.displayName = 'Button';

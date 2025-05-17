@@ -1,13 +1,17 @@
 :root {
   //colors
+  --select-primary-background-color-light: rgba(253, 198, 172, 0.47);
   --select-primary-line-color-light: #ffffff;
   --select-primary-font-color-light: #a15267;
 
   --select-secondary-line-color-light: #fe4a6b;
   --select-secondary-font-color-light: #a15267;
+  --select-secondary-background-color-light: transparent;
 
   //sizes
   --select-label-font-size: 20px;
 
   //shadows
+  --select-primary-shadow-light: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
+  --select-secondary-shadow-light: none;
 }

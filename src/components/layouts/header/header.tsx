@@ -52,12 +52,12 @@ export const Header = () => {
               <div className="header__nav--auth-elements">
                 <div className="header__nav--element">
                   <Link href="/login">
-                    <Button hasArrow={false}>login</Button>
+                    <Button>login</Button>
                   </Link>
                 </div>
                 <div className="header__nav--element">
                   <Link href="/signup">
-                    <Button hasArrow={false}>signup</Button>
+                    <Button>signup</Button>
                   </Link>
                 </div>
               </div>

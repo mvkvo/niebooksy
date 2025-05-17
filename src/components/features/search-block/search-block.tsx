@@ -1,7 +1,6 @@
 'use client';
 
 import './search-block.scss';
-
 import { Input } from '@/components/ui/input';
 import { SearchBlockProps } from './models';
 import { Select } from '@/components/ui/select';

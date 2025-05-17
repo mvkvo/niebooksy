@@ -12,7 +12,7 @@
   text-transform: uppercase;
   color: var(--label-font-color);
   font-size: var(--input-label-font-size);
-  width: inherit;
+  width: 100%;
 
   &__container {
     background-color: var(--container-bg);
@@ -23,7 +23,8 @@
     justify-content: center;
     padding: 10px 8px;
 
-    input {
+    input,
+    textarea {
       background: transparent;
       border: 0;
       border-bottom: 1px solid var(--line-color);
@@ -50,5 +51,17 @@
       --container-shadow: none;
       --line-color: var(--input-secondary-line-color-light);
     }
+  }
+
+  &__errors {
+    font-size: 14px;
+    color: #fa6060;
+    padding-left: 2rem;
+    padding-top: 1rem;
+    font-weight: 700;
+  }
+
+  &--disabled {
+    opacity: 0.7;
   }
 }

@@ -48,12 +48,28 @@ a {
   gap: 3rem;
   margin-bottom: 3rem;
   align-items: center;
-  justify-content: center;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  align-items: center;
+.form {
+  &__result {
+    text-align: center;
+    font-weight: 700;
+  }
+
+  &--success {
+    .form__result {
+      color: #077c21;
+    }
+  }
+
+  &--error {
+    .form__result {
+      color: #fa6060;
+    }
+  }
+}
+
+.dashboard-page {
+  margin-top: 5rem;
+  width: 100%;
 }

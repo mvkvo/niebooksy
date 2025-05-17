@@ -1,4 +1,4 @@
-@import "./button.tokens.scss";
+@import './button.tokens.scss';
 
 .btn {
   --btn-font-size: var(--button-large-font-size);
@@ -39,5 +39,10 @@
     --btn-height: var(--button-small-height);
     --btn-font-size: var(--button-small-font-size);
     --btn-padding: var(--button-small-padding);
+  }
+
+  &:disabled {
+    cursor: inherit;
+    background-color: rgba(254, 74, 107, 0.5);
   }
 }

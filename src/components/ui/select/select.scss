@@ -1,17 +1,23 @@
 @import './select.tokens.scss';
 
 .select {
+  --background-color: var(--select-primary-background-color-light);
+  --box-shadow: var(--select-primary-shadow-light);
   --line-color: var(--select-primary-line-color-light);
   --font-color: var(--select-primary-font-color-light);
 
+  background-color: var(--background-color);
+  box-shadow: var(--box-shadow);
+  width: 100%;
   padding: 10px 8px;
 
   select {
     border: none;
+    background-color: transparent;
     color: var(--font-color);
     font-size: var(--select-label-font-size);
     border-bottom: 1px solid var(--line-color);
-    width: 100%;
+    width: inherit;
     font-family: inherit;
     text-transform: uppercase;
     padding: 4px 0px;
@@ -21,11 +27,12 @@
     }
   }
 
-  /*   &--primary {
+  &--primary {
   }
- */
 
   &--secondary {
+    --background-color: var(--select-secondary-background-color-light);
+    --box-shadow: var(--select-secondary-shadow-light);
     --line-color: var(--select-secondary-line-color-light);
     --font-color: var(--select-secondary-font-color-light);
   }

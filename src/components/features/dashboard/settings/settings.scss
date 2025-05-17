@@ -1,0 +1,10 @@
+.settings {
+  display: flex;
+
+  &__content {
+    padding: 1rem 3rem;
+    border: 3px solid #ffffff;
+    border-left: none;
+    flex-grow: 1;
+  }
+}

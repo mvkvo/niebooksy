@@ -1,0 +1,55 @@
+.information {
+  display: flex;
+  justify-content: space-between;
+
+  .profile-information {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .profile-picture {
+    .picture-box {
+      width: 128px;
+      height: 128px;
+
+      border-radius: 100%;
+      overflow: hidden;
+      position: relative;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      input[type='file'] {
+        cursor: pointer;
+        height: 128px;
+        width: 128px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+      }
+    }
+
+    &__modal {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    &__box {
+      height: 256px;
+      width: 256px;
+      overflow: hidden;
+      position: relative;
+    }
+  }
+
+  img {
+    object-fit: contain;
+  }
+}
