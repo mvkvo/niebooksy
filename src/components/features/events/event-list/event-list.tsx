@@ -2,9 +2,9 @@
 
 import './event-list.scss';
 import { EventListItem } from './event-list-item';
-import { EventsProps } from './models';
+import { EventListProps } from './models';
 
-export const EventList = ({ events }: EventsProps) => {
+export const EventList = ({ events }: EventListProps) => {
   return (
     <div className="event-list">
       {events.map((event) => (

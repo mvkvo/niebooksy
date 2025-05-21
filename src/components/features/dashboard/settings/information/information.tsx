@@ -2,7 +2,7 @@
 
 import './information.scss';
 import classNames from 'classnames';
-import { InformationProps } from '../../models';
+import { DashboardInformationProps } from '../../models';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
@@ -16,7 +16,7 @@ import Image from 'next/image';
 import avatar from '@/assets/avatar.png';
 import { Modal } from '@/components/ui/modal';
 
-export const Information = ({ user }: InformationProps) => {
+export const Information = ({ user }: DashboardInformationProps) => {
   const [profilePicture, setProfilePicture] = useState(
     user.profile_picture || avatar.src
   );

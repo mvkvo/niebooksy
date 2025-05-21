@@ -7,7 +7,7 @@ export default async function LoginPage() {
   if (session) redirect('/dashboard');
 
   return (
-    <div>
+    <div className="page">
       <LoginForm />
     </div>
   );

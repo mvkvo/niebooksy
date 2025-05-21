@@ -19,8 +19,12 @@ export const EventListItem = (event: EventProps) => {
           <Image src={placeholder} alt="hero img" />
         </div>
         <div className="event__content">
-          <Tag name={event.category_name} />
-          <h2 className="event__owner-name">{event.owner.name}</h2>
+          <Tag name={event.category} />
+          <Link href={`/profile/${event.owner.username}`}>
+            <h2 className="event__owner-name">
+              {event.owner.name} {event.owner.surname}
+            </h2>
+          </Link>
           <div className="event__description">{event.content}</div>
           <div className="event__links">
             <div className="event__links--socials">

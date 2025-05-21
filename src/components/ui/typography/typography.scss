@@ -1,6 +1,7 @@
 @import './typography.tokens.scss';
 
 .typography {
+  width: fit-content;
   --font-color: var(--typography-body-font-color-light);
 
   color: var(--font-color);
@@ -23,6 +24,7 @@
   }
 
   &--headline {
+    margin: 8px 0;
     --font-color: var(--typography-headline-font-color-light);
   }
 }

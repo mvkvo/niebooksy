@@ -20,6 +20,7 @@ export const Input = forwardRef<
       errorMessage,
       autocomplete,
       isDisabled,
+      defaultValue,
       ...rest
     },
     ref
@@ -40,6 +41,7 @@ export const Input = forwardRef<
               placeholder={placeholder}
               ref={ref as React.Ref<HTMLTextAreaElement>}
               disabled={isDisabled}
+              defaultValue={defaultValue}
               {...rest}
             />
           ) : (
@@ -51,6 +53,7 @@ export const Input = forwardRef<
               ref={ref as React.Ref<HTMLInputElement>}
               autoComplete={autocomplete}
               disabled={isDisabled}
+              defaultValue={defaultValue}
               {...rest}
             />
           )}

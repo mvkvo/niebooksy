@@ -8,13 +8,18 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { SignState } from '@/types/signup';
 import { validateLogin } from '@actions/signin';
+import { Container } from '@/components/layouts/container';
 
 export const LoginForm = () => {
-  const [form, setForm] = useState({ email: '', password: '' });
   const [state, formAction, pending] = useActionState<SignState, FormData>(
     validateLogin,
     undefined
   );
+  const [form, setForm] = useState({
+    email: 'user@user.com',
+    password: 'User1234!',
+  });
+
   const params = useSearchParams();
   const errorCode = params.get('error') ?? '';
   const messages: Record<string, string> = {
@@ -35,39 +40,45 @@ export const LoginForm = () => {
   }, [state]);
 
   return (
-    <div
-      className={classNames('form', {
-        'form--error': error,
-      })}
-    >
-      {error && <div className="form__result">{error}</div>}
-      <form action={formAction}>
-        <Input
-          id="email"
-          label="Email"
-          name="email"
-          autocomplete="email"
-          errorMessage={state?.errors?.email}
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.currentTarget.value })}
-        />
-        <Input
-          id="password"
-          label="Hasło"
-          name="password"
-          inputType="password"
-          autocomplete="current-password"
-          errorMessage={state?.errors?.password}
-          value={form.password}
-          onChange={(e) =>
-            setForm({ ...form, password: e.currentTarget.value })
-          }
-        />
-        <Button disabled={pending} type="submit">
-          {pending ? 'Logowanie...' : 'Zaloguj się'}
-        </Button>
-      </form>
-    </div>
+    <Container>
+      <div
+        className={classNames('form', {
+          'form--error': error,
+        })}
+      >
+        {error && <div className="form__result">{error}</div>}
+        <form action={formAction}>
+          <div className="form__fields">
+            <Input
+              id="email"
+              label="Email"
+              name="email"
+              autocomplete="email"
+              errorMessage={state?.errors?.email}
+              value={form.email}
+              onChange={(e) =>
+                setForm({ ...form, email: e.currentTarget.value })
+              }
+            />
+            <Input
+              id="password"
+              label="Hasło"
+              name="password"
+              inputType="password"
+              autocomplete="current-password"
+              errorMessage={state?.errors?.password}
+              value={form.password}
+              onChange={(e) =>
+                setForm({ ...form, password: e.currentTarget.value })
+              }
+            />
+            <Button disabled={pending} type="submit">
+              {pending ? 'Logowanie...' : 'Zaloguj się'}
+            </Button>
+          </div>
+        </form>
+      </div>
+    </Container>
   );
 };
 

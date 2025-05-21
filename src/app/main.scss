@@ -48,9 +48,28 @@ a {
   gap: 3rem;
   margin-bottom: 3rem;
   align-items: center;
+  max-width: 90rem;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.page {
+  margin-top: 6rem;
+  width: inherit;
 }
 
 .form {
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+
+    .btn {
+      margin-top: 2rem;
+    }
+  }
+
   &__result {
     text-align: center;
     font-weight: 700;
@@ -69,7 +88,11 @@ a {
   }
 }
 
-.dashboard-page {
-  margin-top: 5rem;
-  width: 100%;
+a {
+  display: block;
+  width: fit-content;
+
+  &:hover {
+    opacity: 0.6;
+  }
 }
